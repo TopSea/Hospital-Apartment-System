@@ -1,6 +1,6 @@
 # 住院管理系统
-使用的是MySQL数据库，有三个表：  
-mysql> show tables;  
+使用的是MySQL数据库，有三个表：＜/br＞ 
+mysql> show tables;＜/br＞
 +--------------------+  
 | Tables_in_dbdesign |  
 +--------------------+  
