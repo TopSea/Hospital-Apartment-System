@@ -1,14 +1,14 @@
 # 住院管理系统
-使用的是MySQL数据库，有三个表：
-mysql> show tables;
-+--------------------+
-| Tables_in_dbdesign |
-+--------------------+
-| department         |
-| patient            |
-| room               |
-+--------------------+
-病人表：
+使用的是MySQL数据库，有三个表：  
+mysql> show tables;  
++--------------------+  
+| Tables_in_dbdesign |  
++--------------------+  
+| department         |  
+| patient            |  
+| room               |  
++--------------------+  
+病人表：  
 mysql> desc patient;
 +--------------+-------------+------+-----+---------+-------+
 | Field        | Type        | Null | Key | Default | Extra |
