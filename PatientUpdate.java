@@ -52,11 +52,6 @@ public class PatientUpdate extends JDialog implements ActionListener {
 
         male = new JRadioButton("男");
         female = new JRadioButton("女");
-        genders = new ButtonGroup();
-        genders.add(male);
-        genders.add(female);
-        gen.add(male);
-        gen.add(female);
 
         department = new JSpinner(new SpinnerListModel(departs));
         room = new JSpinner(new SpinnerListModel(rooms));
@@ -75,6 +70,12 @@ public class PatientUpdate extends JDialog implements ActionListener {
         loginText.setEditable(false);
 
         if(button.equals("修改数据")) {
+            if((my.UpdateSelect(row, "gender")).equals("男")) {
+                male = new JRadioButton("男", true);
+            }
+            if((my.UpdateSelect(row, "gender")).equals("女")) {
+                female = new JRadioButton("女", true);
+            }
             login_numberText.setText(my.UpdateSelect(row, "login_number"));
             login_numberText.setEditable(false);
             nameText.setText(my.UpdateSelect(row, "patient_name"));
@@ -105,7 +106,6 @@ public class PatientUpdate extends JDialog implements ActionListener {
 
         loginLabel = CreateLabel("住院日期：");
 
-
         costLabel = CreateLabel("总消费：");
 
         sureLabel = CreateLabel("请确认信息后插入");
@@ -114,7 +114,12 @@ public class PatientUpdate extends JDialog implements ActionListener {
         insertButton.addActionListener(this);
         insertButton.setActionCommand(button);
 
-
+        genders = new ButtonGroup();
+        genders.add(male);
+        genders.add(female);
+        gen.add(male);
+        gen.add(female);
+        
         north.add(login_numberLabel);
         north.add(login_numberText);
 //        jl4.setFont(new Font("宋体", Font.PLAIN, 16));
