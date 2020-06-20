@@ -10,17 +10,17 @@ import java.util.Vector;
 import static java.lang.System.out;
 
 public class DepartModel extends AbstractTableModel {
-    
+
     //rowData存放行数据，columnNames存放列名
     Vector rowData, columnNames;
     //定义操作数据库需要的东西
     Connection con = null;
     PreparedStatement pstmt = null;
     ResultSet result = null;
-    
-    public void UpdateDepart(String sql, String datas) {
+
+    public String UpdateDepart(String sql, String datas) {
         boolean b = true;
-        String info = null;
+        String info = "";
         String room = "select * from room where department = ?";
         try{
             con = DBDesign.GetConnection();
@@ -30,7 +30,7 @@ public class DepartModel extends AbstractTableModel {
             while (result.next()) {
                 String result1 = result.getString("room_number");
                 String result2 = result.getString("bed_info") + ";";
-                info = result1.concat(result2);
+                info = info + result1.concat(result2);
                 pstmt = con.prepareStatement(sql);
                 pstmt.setString(1, info);
                 pstmt.setString(2, datas);
@@ -38,10 +38,10 @@ public class DepartModel extends AbstractTableModel {
             pstmt.executeUpdate();
             out.println(info);
         }catch (Exception e){
-
             e.printStackTrace();
         }finally {
             DBDesign.CloseDB(result, pstmt, con);
+            return info;
         }
     }
     public void SelectDepart(String sql) {
